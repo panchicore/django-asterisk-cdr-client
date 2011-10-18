@@ -1,4 +1,6 @@
 # Django settings for asteriskcdrdb project.
+import os
+PROJECT_DIR = os.path.dirname(__file__).replace('\\','/')
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -9,16 +11,7 @@ ADMINS = (
 
 MANAGERS = ADMINS
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': '',                      # Or path to database file if using sqlite3.
-        'USER': '',                      # Not used with sqlite3.
-        'PASSWORD': '',                  # Not used with sqlite3.
-        'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
-        'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
-    }
-}
+
 
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
@@ -31,7 +24,7 @@ TIME_ZONE = 'America/Chicago'
 
 # Language code for this installation. All choices can be found here:
 # http://www.i18nguy.com/unicode/language-identifiers.html
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'es-us'
 
 SITE_ID = 1
 
@@ -103,9 +96,7 @@ MIDDLEWARE_CLASSES = (
 ROOT_URLCONF = 'asteriskcdrdb.urls'
 
 TEMPLATE_DIRS = (
-    # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
-    # Always use forward slashes, even on Windows.
-    # Don't forget to use absolute paths, not relative paths.
+    os.path.join(PROJECT_DIR, "templates").replace('\\','/')
 )
 
 INSTALLED_APPS = (
@@ -116,9 +107,10 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # Uncomment the next line to enable the admin:
-    # 'django.contrib.admin',
+    'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
+    'cdr',
 )
 
 # A sample logging configuration. The only tangible logging
@@ -143,3 +135,6 @@ LOGGING = {
         },
     }
 }
+
+
+from local_settings import *

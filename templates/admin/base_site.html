@@ -1,0 +1,22 @@
+{% extends "admin/base.html" %}
+{% load i18n %}
+
+{% block title %}{{ title }} | {% trans 'cdrDB client' %}{% endblock %}
+
+{% block branding %}
+<h1 id="site-name">
+    <img src="http://iberxarxa.com/portada/wp-content/uploads/2009/10/asterisk.png" width="70">
+    {% trans 'cdrDB client' %}
+</h1>
+{% endblock %}
+
+{% block extrastyle %}
+<style>
+#header{ background-color: #fff; color:white !important; border-bottom: solid 3px black; }
+#header div{color:gray; }
+#header div a{color:#000 !important; }
+#branding h1{ color: gray; }
+</style>
+{% endblock %}
+
+{% block nav-global %}{% endblock %}

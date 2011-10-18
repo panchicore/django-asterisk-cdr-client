@@ -9,3 +9,5 @@ mkvirtualenv asteriskdb
 workon asteriskdb
 pip install -r requirements.txt
 
+python manage.py syncdb #enter the admin information to login into admin-site
+
