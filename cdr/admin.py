@@ -1,4 +1,5 @@
 from django.http import HttpResponse
+from django.shortcuts import render_to_response
 from django.template.loader import render_to_string
 import time
 
@@ -11,8 +12,6 @@ def export_to_xls(modeladmin, request, queryset):
     model = modeladmin.model
     params = request.GET.items()
     dict = {}
-
-    print params
 
     #if params[0].has_key('o'): params.pop('o')
     #if params[0].has_key('ot'): params.pop('ot')
@@ -30,14 +29,16 @@ def export_to_xls(modeladmin, request, queryset):
     for o in objects:
         duracion_total += o.billsec
 
-
     duracion_total = duracion_total / 60
     rate = Rate.objects.get()
     gran_total = duracion_total * rate.value
-        
 
-    res = render_to_string("export/xls.html", {'registros':objects, 'duracion_total':duracion_total, 'gran_total':gran_total})
-    return HttpResponse(res)
+    response = render_to_response("export/xls.html", {'registros':objects, 'duracion_total':duracion_total, 'gran_total':gran_total})
+    filename = "invoice.xls"
+    response['Content-Disposition'] = 'attachment; filename='+filename
+
+    response['Content-Type'] = 'application/vnd.ms-excel; charset=utf-8'
+    return response
 
 export_to_xls.short_description = "Exportar a XLS"
 
