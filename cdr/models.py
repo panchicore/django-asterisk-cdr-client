@@ -35,6 +35,12 @@ class Cdr(models.Model):
         return 'callid: %s "%s" (%i)' % (self.uniqueid, self.disposition, self.duration)
 
     @property
-    def duration_time(self):
-        return time.strftime('%H:%M:%S', time.gmtime(self.duration))
+    def tiempo_facturado(self):
+        return time.strftime('%H:%M:%S', time.gmtime(self.billsec))
 
+class Rate(models.Model):
+    date_of_rate = models.DateField()
+    value = models.DecimalField(max_digits=5, decimal_places=4, default=0)
+
+    def __unicode__(self):
+        return '%s' % (self.date_of_rate)

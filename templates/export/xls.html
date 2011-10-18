@@ -1,0 +1,28 @@
+<table width="100%">
+  <tr>
+    <td>Fecha</td>
+    <td>Channel</td>
+    <td>Disposition</td>
+    <td>DST</td>
+    <td>UniqueID</td>
+    <td>Tiempo</td>
+  </tr>
+    {% for r in registros %}
+      <tr>
+        <td>{{ r.calldate }}</td>
+        <td>{{ r.channel }}</td>
+        <td>{{ r.disposition }}</td>
+        <td>{{ r.dstchannel }}</td>
+        <td>{{ r.uniqueid }}</td>
+        <td>{{ r.tiempo_facturado }}</td>
+      </tr>
+    {% endfor %}
+    <tr>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>Duracion</td>
+    <td>{{ duracion_total }} mins</td>
+    <td>Total</td>
+    <td>${{ gran_total }}</td>
+  </tr>
+</table>
