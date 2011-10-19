@@ -111,6 +111,7 @@ INSTALLED_APPS = (
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
     'cdr',
+    'gunicorn',
 )
 
 # A sample logging configuration. The only tangible logging
