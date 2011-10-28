@@ -1,0 +1,6 @@
+<h5>Connect to server</h5>
+    <ul>
+        {% for d in databases %}
+            <li><a href="{% url set_db d %}">{{ d }}</a></li>
+        {% endfor %}
+    </ul>
