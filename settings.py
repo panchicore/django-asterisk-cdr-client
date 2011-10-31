@@ -94,6 +94,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     'debug_toolbar.middleware.DebugToolbarMiddleware',
     'cdr.middleware.CommonMiddleware',
+    'django_sorting.middleware.SortingMiddleware',
 )
 
 ROOT_URLCONF = 'asteriskcdrdb.urls'
@@ -116,7 +117,8 @@ INSTALLED_APPS = (
     'cdr',
     'gunicorn',
     'django_extensions',
-    'debug_toolbar'
+    'debug_toolbar',
+    'django_sorting'
 )
 
 INTERNAL_IPS = ('127.0.0.1',)

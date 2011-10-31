@@ -1,21 +1,53 @@
 {% extends "base.html" %}
-
+{% load sorting_tags %}
 
 {% block content %}
 
-    <div class="hero-unit">
+        <div class="hero-unit">
           <p>Vestibulum id ligula porta felis euismod semper. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.</p>
           <p><a class="btn primary large">Learn more &raquo;</a></p>
         </div>
 
         <!-- Example row of columns -->
-        <div class="row">
+        <div class="row" style="margin-left: 0px;">
+        
 
+            <table class="zebra-striped">
+
+                    <thead>
+                        <tr>
+                            <th>CallDate</th>
+                            <th>duration</th>
+                            <th>tiempo_facturado</th>
+                            <th>{% anchor disposition Disposition %}</th>
+                            <th>channel</th>
+                            <th>dstchannel</th>
+                            <th>dst</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        {% autosort registros %}
+                        {% for r in registros %}
+                        <tr>
+                            <td>{{ r.calldate }}</td>
+                            <td>{{ r.duration }}</td>
+                            <td>{{ r.tiempo_facturado }}</td>
+                            <td>{{ r.disposition }}</td>
+                            <td>{{ r.channel }}</td>
+                            <td>{{ r.dstchannel }}</td>
+                            <td>{{ r.dst }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+
+            </table>
+        
         </div>
 
-        {% for r in registros %}
-            <div>{{ r }}</div>
-        {% endfor %}
+
+
+
 
 
 

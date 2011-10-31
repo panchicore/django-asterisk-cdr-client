@@ -5,7 +5,7 @@ from django.template.context import RequestContext
 from cdr.models import Cdr
 
 def home(request):
-    registros = Cdr.objects.all().using(request.database)[0:10]
+    registros = Cdr.objects.all().using(request.database)[0:30]
     return render_to_response("cdr/index.html",
                                 {'registros':registros},
                                 context_instance=RequestContext(request))
