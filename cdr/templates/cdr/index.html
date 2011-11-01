@@ -12,6 +12,7 @@
         <div class="row" style="margin-left: 0px;">
         
 
+            {% if registros %}
             <table class="zebra-striped">
 
                     <thead>
@@ -42,7 +43,10 @@
                     </tbody>
 
             </table>
-        
+        {% else %}
+                <h2>Nada que mostrar con ese criterio</h2>
+        {% endif %}
+
         </div>
 
 
