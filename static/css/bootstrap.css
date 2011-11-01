@@ -1687,12 +1687,20 @@ a.menu:after, .dropdown-toggle:after {
 }
 .hero-unit {
   background-color: #f5f5f5;
-  margin-bottom: 30px;
-  padding: 60px;
+  
+  padding: 10px;
   -webkit-border-radius: 6px;
   -moz-border-radius: 6px;
   border-radius: 6px;
 }
+
+.hero-unit .actions{
+    margin-top: 0px; padding-bottom: 0px; margin-bottom: 0px;
+}
+.hero-unit form{
+    margin-bottom: 7px;
+}
+
 .hero-unit h1 {
   margin-bottom: 0;
   font-size: 60px;

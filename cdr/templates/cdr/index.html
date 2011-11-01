@@ -1,11 +1,44 @@
 {% extends "base.html" %}
 {% load sorting_tags %}
 
+{% block extra_js %}
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $("#id_calldate_from").datepicker({ maxDate: 0, dateFormat:"dd/mm/yy" });
+            $("#id_calldate_to").datepicker({ maxDate: 0, dateFormat:"dd/mm/yy" });
+        });
+    </script>
+{% endblock %}
+
 {% block content %}
 
         <div class="hero-unit">
-          <p>Vestibulum id ligula porta felis euismod semper. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.</p>
-          <p><a class="btn primary large">Learn more &raquo;</a></p>
+          <form action=".">
+              {% csrf_token %}
+              <fieldset>
+                  <legend>Filtros</legend>
+
+                  <div class="clearfix">
+                      {{ form.calldate_from.label_tag }}
+                      <div class="input">
+                          {{ form.calldate_from }}
+                      </div>
+                  </div>
+
+                  <div class="clearfix">
+                      {{ form.calldate_to.label_tag }}
+                      <div class="input">
+                          {{ form.calldate_to }}
+                      </div>
+                  </div>
+
+              </fieldset>
+
+              <div class="actions">
+                  <input type="submit" value="Filtrar" class="btn primary large">
+              </div>
+
+          </form>
         </div>
 
         <!-- Example row of columns -->
