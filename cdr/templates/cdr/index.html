@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load sorting_tags %}
+{% load sorting_tags pagination_tags %}
 
 {% block extra_js %}
     <script type="text/javascript">
@@ -32,10 +32,20 @@
                       </div>
                   </div>
 
+                  <div class="clearfix">
+                      {{ form.disposition.label_tag }}
+                      <div class="input">
+                          {{ form.disposition }}
+                      </div>
+                  </div>
+
+
+
               </fieldset>
 
               <div class="actions">
                   <input type="submit" value="Filtrar" class="btn primary large">
+                  <input type="submit" value="Borrarlos" class="btn danger">
               </div>
 
           </form>
@@ -50,18 +60,20 @@
 
                     <thead>
                         <tr>
-                            <th>CallDate</th>
+                            <th>{% anchor calldate CallDate %}</th>
                             <th>duration</th>
                             <th>tiempo_facturado</th>
                             <th>{% anchor disposition Disposition %}</th>
                             <th>channel</th>
                             <th>dstchannel</th>
                             <th>dst</th>
+                            <th>x</th>
                         </tr>
                     </thead>
 
                     <tbody>
                         {% autosort registros %}
+                        {% autopaginate registros %}
                         {% for r in registros %}
                         <tr>
                             <td>{{ r.calldate }}</td>
@@ -71,11 +83,17 @@
                             <td>{{ r.channel }}</td>
                             <td>{{ r.dstchannel }}</td>
                             <td>{{ r.dst }}</td>
+                            <td>
+                                <a href="" class="btn small danger">x</a>
+                            </td>
                         </tr>
                         {% endfor %}
                     </tbody>
 
             </table>
+
+
+            {% paginate %}
         {% else %}
                 <h2>Nada que mostrar con ese criterio</h2>
         {% endif %}

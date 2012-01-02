@@ -3,3 +3,5 @@ mysql-python
 gunicorn
 django-sorting
 django-pagination
+ipython
+readline

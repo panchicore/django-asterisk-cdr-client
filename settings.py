@@ -95,6 +95,7 @@ MIDDLEWARE_CLASSES = (
     'debug_toolbar.middleware.DebugToolbarMiddleware',
     'cdr.middleware.CommonMiddleware',
     'django_sorting.middleware.SortingMiddleware',
+    'pagination.middleware.PaginationMiddleware',
 )
 
 ROOT_URLCONF = 'asteriskcdrdb.urls'
@@ -118,7 +119,8 @@ INSTALLED_APPS = (
     'gunicorn',
     'django_extensions',
     'debug_toolbar',
-    'django_sorting'
+    'django_sorting',
+    'pagination',
 )
 
 INTERNAL_IPS = ('127.0.0.1',)
@@ -149,5 +151,5 @@ LOGGING = {
     }
 }
 
-
+PAGINATION_DEFAULT_PAGINATION = 30
 from local_settings import *
