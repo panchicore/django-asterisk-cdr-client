@@ -5,3 +5,5 @@ django-sorting
 django-pagination
 ipython
 readline
+django-debug-toolbar
+django-extensions

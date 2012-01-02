@@ -1,3 +1,4 @@
+from django.contrib.admin.views.decorators import staff_member_required
 from django.core.urlresolvers import reverse
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render_to_response
@@ -6,6 +7,7 @@ from cdr.models import Cdr
 from datetime import date, datetime, timedelta
 from cdr.forms import CdrSearchForm
 
+#@staff_member_required
 def home(request):
 
     if not request.GET.has_key('csrfmiddlewaretoken'):
@@ -35,7 +37,7 @@ def home(request):
                                 {'registros':registros, 'form':form},
                                 context_instance=RequestContext(request))
 
-
+#@staff_member_required
 def set_db(request, database):
     request.session['DB'] = database
     return HttpResponseRedirect(reverse('home'))
